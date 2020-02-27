@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -24,7 +25,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 @TeleOp(name="ControlHubTest", group="Linear Opmode")
 
-public class MecanumMate extends LinearOpMode {
+public class Mecanum_Mate extends LinearOpMode {
 
 
     // Declare OpMode members.
@@ -37,6 +38,10 @@ public class MecanumMate extends LinearOpMode {
     private DcMotor ColectorV = null;
     private DcMotor SistemStoica = null;
     private DcMotor ColectorE = null;
+    private  Servo PaletaE = null;
+    private  Servo PaletaV = null;
+
+
     double p = 0.5, ok = 0;
     double power = 1;
 
@@ -57,7 +62,8 @@ public class MecanumMate extends LinearOpMode {
         ColectorE= hardwareMap.get(DcMotor.class, "ColectorE");
         SistemStoica= hardwareMap.get(DcMotor.class, "SistemStoica");
 
-
+        PaletaE = hardwareMap.get(Servo.class, "PaletaE");
+        PaletaV = hardwareMap.get(Servo.class, "PaletaV");
 
 
         TleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -236,22 +242,22 @@ public class MecanumMate extends LinearOpMode {
                 }
                 while (gamepad2.dpad_down) {
                     Ridicare.setPower(-p);
-                    if (gamepad1.left_trigger != 0)
+                    if (gamepad2.left_trigger != 0)
                         p = 0.3;
-                    if (gamepad1.left_trigger == 0)
+                    if (gamepad2.left_trigger == 0)
                         p = 0.5;
-                    if (!gamepad1.dpad_down) {
+                    if (!gamepad2.dpad_down) {
                         Ridicare.setPower(0);
                         break;
                     }
                 }
                 while (gamepad2.dpad_up) {
                     Ridicare.setPower(p);
-                    if (gamepad1.left_trigger != 0)
+                    if (gamepad2.left_trigger != 0)
                         p = 0.3;
-                    if (gamepad1.left_trigger == 0)
+                    if (gamepad2.left_trigger == 0)
                         p = 0.5;
-                    if (!gamepad1.dpad_up) {
+                    if (!gamepad2.dpad_up) {
                         Ridicare.setPower(0);
                         break;
                     }
@@ -262,6 +268,17 @@ public class MecanumMate extends LinearOpMode {
                     ok = 1;
                     break;
                 }
+
+                if(gamepad2.left_bumper){
+                    PaletaE.setPosition(0.5);
+                    //PaletaV.setPosition(-0.5);
+                }
+                if(gamepad2.right_bumper){
+                    PaletaE.setPosition(-0.5);
+                    //PaletaV.setPosition(0.5);
+                }
+
+
             }
 
 
@@ -444,9 +461,17 @@ public class MecanumMate extends LinearOpMode {
                     ok=0;
                     sleep(1500);
                 }
+
+                if(gamepad2.left_bumper){
+                    PaletaE.setPosition(0.5);
+                    //PaletaV.setPosition(-0.5);
+                }
+                if(gamepad2.right_bumper) {
+                    PaletaE.setPosition(-0.5);
+                    //PaletaV.setPosition(0.5);
+                }
             }
         }
 
     }
 }
-
