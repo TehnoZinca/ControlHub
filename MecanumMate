@@ -42,7 +42,7 @@ public class Mecanum_Mate extends LinearOpMode {
     private  Servo PaletaV = null;
 
 
-    double p = 0.5, ok = 0;
+    double p = 1, ok = 0;
     double power = 1;
 
     @Override
@@ -83,6 +83,8 @@ public class Mecanum_Mate extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
+
+
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
@@ -248,6 +250,7 @@ public class Mecanum_Mate extends LinearOpMode {
                         p = 0.5;
                     if (!gamepad2.dpad_down) {
                         Ridicare.setPower(0);
+                        p=1;
                         break;
                     }
                 }
@@ -259,6 +262,7 @@ public class Mecanum_Mate extends LinearOpMode {
                         p = 0.5;
                     if (!gamepad2.dpad_up) {
                         Ridicare.setPower(0);
+                        p=1;
                         break;
                     }
                 }
@@ -270,12 +274,12 @@ public class Mecanum_Mate extends LinearOpMode {
                 }
 
                 if(gamepad2.left_bumper){
-                    PaletaE.setPosition(0.5);
-                    //PaletaV.setPosition(-0.5);
+                    PaletaE.setPosition(0.3);
+                    PaletaV.setPosition(-0.5);
                 }
                 if(gamepad2.right_bumper){
                     PaletaE.setPosition(-0.5);
-                    //PaletaV.setPosition(0.5);
+                    PaletaV.setPosition(0.7);
                 }
 
 
@@ -440,6 +444,7 @@ public class Mecanum_Mate extends LinearOpMode {
                         p = 0.5;
                     if (!gamepad1.dpad_down) {
                         Ridicare.setPower(0);
+                        p=1;
                         break;
                     }
                 }
@@ -451,6 +456,7 @@ public class Mecanum_Mate extends LinearOpMode {
                         p = 0.5;
                     if (!gamepad1.dpad_up) {
                         Ridicare.setPower(0);
+                        p=1;
                         break;
                     }
                 }
@@ -463,12 +469,12 @@ public class Mecanum_Mate extends LinearOpMode {
                 }
 
                 if(gamepad2.left_bumper){
-                    PaletaE.setPosition(0.5);
-                    //PaletaV.setPosition(-0.5);
+                    PaletaE.setPosition(0.3);
+                    PaletaV.setPosition(-0.5);
                 }
                 if(gamepad2.right_bumper) {
                     PaletaE.setPosition(-0.5);
-                    //PaletaV.setPosition(0.5);
+                    PaletaV.setPosition(0.7);
                 }
             }
         }
