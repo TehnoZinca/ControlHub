@@ -1,4 +1,5 @@
 
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -92,14 +93,12 @@ public class Mecanum_Mate extends LinearOpMode {
             while(ok == 0) {
 
                 while (gamepad2.y) {
-                    SistemStoica.setPower(-power);
+                    SistemStoica.setPower(-1);
                     if (!gamepad2.y) {
                         SistemStoica.setPower(0);
                         break;
                     }
                 }
-
-
                 ColectorV.setPower(-1);
                 ColectorE.setPower(1);
 
@@ -298,6 +297,14 @@ public class Mecanum_Mate extends LinearOpMode {
 
 
             while (ok == 1) {
+                while (gamepad2.y) {
+                    SistemStoica.setPower(-1);
+                    if (!gamepad2.y) {
+                        SistemStoica.setPower(0);
+                        break;
+                    }
+                }
+                
                 while (gamepad1.dpad_up) {
                     TleftDrive.setPower(-power);
                     BleftDrive.setPower(-power);
@@ -436,25 +443,25 @@ public class Mecanum_Mate extends LinearOpMode {
                         break;
                     }
                 }
-                while (gamepad2.dpad_down) {
+                while (gamepad2.dpad_up) {
                     Ridicare.setPower(-p);
                     if (gamepad1.left_trigger != 0)
                         p = 0.3;
                     if (gamepad1.left_trigger == 0)
                         p = 0.5;
-                    if (!gamepad1.dpad_down) {
+                    if (!gamepad1.dpad_up) {
                         Ridicare.setPower(0);
                         p=1;
                         break;
                     }
                 }
-                while (gamepad2.dpad_up) {
+                while (gamepad2.dpad_down) {
                     Ridicare.setPower(p);
                     if (gamepad1.left_trigger != 0)
                         p = 0.3;
                     if (gamepad1.left_trigger == 0)
                         p = 0.5;
-                    if (!gamepad1.dpad_up) {
+                    if (!gamepad1.dpad_down) {
                         Ridicare.setPower(0);
                         p=1;
                         break;
