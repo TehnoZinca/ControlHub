@@ -93,7 +93,7 @@ public class Mecanum_Mate extends LinearOpMode {
             while(ok == 0) {
 
                 while (gamepad2.y) {
-                    SistemStoica.setPower(-1);
+                    SistemStoica.setPower(1);
                     if (!gamepad2.y) {
                         SistemStoica.setPower(0);
                         break;
@@ -298,7 +298,7 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (ok == 1) {
                 while (gamepad2.y) {
-                    SistemStoica.setPower(-1);
+                    SistemStoica.setPower(1);
                     if (!gamepad2.y) {
                         SistemStoica.setPower(0);
                         break;
